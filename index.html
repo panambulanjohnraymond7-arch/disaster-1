@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Handa Zamboanga – Disaster Preparedness Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Figtree:wght@400;500;700&display=swap">
+<style>
+:root{
+  --sea:#0b2c3d; --deep:#07202d; --mist:#e9f3f1; --paper:#f7fbfa; --ink:#12303d; --mute:#46636f;
+  --saffron:#f4b400; --coral:#e0472f; --teal:#19a596; --line:#c9dcd8; --card:#ffffff;
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --mist:#0c2330; --paper:#0a1d28; --ink:#e4f0ee; --mute:#9bb6b8; --line:#1f4050; --card:#102c3b;}}
+:root[data-theme="dark"]{--mist:#0c2330; --paper:#0a1d28; --ink:#e4f0ee; --mute:#9bb6b8; --line:#1f4050; --card:#102c3b;}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 1.05rem/1.65 Figtree,system-ui,sans-serif}
+h1,h2,h3{font-family:"Bricolage Grotesque",Georgia,serif;line-height:1.05;margin:0}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--saffron);outline-offset:3px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+
+/* nav */
+nav{position:sticky;top:0;z-index:20;background:var(--deep);color:#fff;border-bottom:3px solid var(--saffron)}
+nav .wrap{display:flex;align-items:center;gap:18px;height:56px;overflow-x:auto;white-space:nowrap}
+nav b{font:800 1.1rem "Bricolage Grotesque",sans-serif;margin-right:auto}
+nav a{text-decoration:none;font-size:.92rem;opacity:.85}
+nav a:hover{opacity:1;text-decoration:underline;text-decoration-color:var(--saffron)}
+nav button{background:none;border:1px solid #ffffff55;color:#fff;border-radius:99px;padding:4px 12px;font:inherit;font-size:.85rem;cursor:pointer}
+
+/* hero */
+.hero{background:var(--sea);color:#fff;position:relative;overflow:hidden;padding:70px 0 0}
+.hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:30px;align-items:end}
+.hero h1{font-size:clamp(2.6rem,7vw,5.2rem);font-weight:800;letter-spacing:-.02em}
+.hero p{max-width:34ch;font-size:1.2rem;color:#cfe5e1;margin:20px 0 28px}
+.btn{display:inline-block;background:var(--saffron);color:#201600;font-weight:700;padding:13px 24px;border-radius:99px;text-decoration:none}
+.btn.ghost{background:none;color:#fff;border:2px solid #ffffff66;margin-left:8px}
+.sails{width:100%;max-width:430px;justify-self:end;display:block}
+.sails .sail{transform-origin:50% 100%;animation:sway 7s ease-in-out infinite}
+.sails .sail:nth-child(2){animation-delay:-2.4s}
+@keyframes sway{50%{transform:rotate(2.2deg)}}
+.waves{display:block;width:100%;height:70px;margin-top:-1px}
+@media (prefers-reduced-motion:reduce){.sails .sail{animation:none}html{scroll-behavior:auto}}
+
+section{padding:76px 0}
+section.alt{background:var(--mist)}
+h2{font-size:clamp(2rem,4.5vw,3.2rem);font-weight:800;letter-spacing:-.015em;margin-bottom:12px}
+.lead{max-width:60ch;color:var(--mute);margin:0 0 34px}
+
+/* facts */
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px}
+.fact{background:var(--card);border-left:6px solid var(--teal);padding:18px 20px;border-radius:4px 16px 16px 4px}
+.fact:nth-child(2){border-color:var(--coral)}.fact:nth-child(3){border-color:var(--saffron)}.fact:nth-child(4){border-color:var(--sea)}
+.fact h3{font-size:1.25rem;margin-bottom:6px}.fact p{margin:0;color:var(--mute);font-size:.97rem}
+
+/* hazard explorer */
+.tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
+.tabs button{border:2px solid var(--line);background:var(--card);color:var(--ink);padding:9px 18px;border-radius:99px;font:700 .95rem Figtree,sans-serif;cursor:pointer}
+.tabs button[aria-selected="true"]{background:var(--sea);color:#fff;border-color:var(--sea)}
+.panel{display:grid;grid-template-columns:1fr 2fr;gap:26px;background:var(--card);border-radius:22px;padding:28px;border:1px solid var(--line)}
+.panel h3{font-size:2rem;margin-bottom:10px}
+.panel .why{color:var(--mute);margin:0}
+.phases{display:grid;gap:14px}
+.phase{border-radius:14px;padding:14px 18px;background:var(--mist)}
+.phase h4{margin:0 0 6px;font:800 1.05rem "Bricolage Grotesque",sans-serif}
+.phase.b h4{color:var(--teal)}.phase.d h4{color:var(--coral)}.phase.a h4{color:#a77b00}
+@media (prefers-color-scheme:dark){.phase.a h4{color:var(--saffron)}}
+.phase ul{margin:0;padding-left:20px}.phase li{margin:3px 0}
+
+/* signals */
+.ladder{display:grid;gap:10px;max-width:760px}
+.rung{display:grid;grid-template-columns:96px 1fr auto;gap:16px;align-items:center;padding:14px 18px;border-radius:14px;color:#fff}
+.rung strong{font:800 1.15rem "Bricolage Grotesque",sans-serif}
+.rung small{font-size:.9rem;opacity:.95}
+.s1{background:#1c8f83}.s2{background:#2f6fb0}.s3{background:#b36b00}.s4{background:#c3402a}.s5{background:#7a1130}
+@media (max-width:560px){.rung{grid-template-columns:1fr}}
+
+/* go bag */
+.bag{display:grid;grid-template-columns:1.3fr .7fr;gap:26px;align-items:start}
+.items{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px}
+.items label{display:flex;gap:12px;align-items:center;background:var(--card);border:2px solid var(--line);padding:12px 14px;border-radius:12px;cursor:pointer}
+.items input{width:20px;height:20px;accent-color:var(--teal)}
+.items label:has(input:checked){border-color:var(--teal);text-decoration:line-through;color:var(--mute)}
+.meter{background:var(--sea);color:#fff;border-radius:22px;padding:26px;position:sticky;top:76px}
+.meter .big{font:800 4rem "Bricolage Grotesque",sans-serif;line-height:1}
+.bar{height:12px;border-radius:9px;background:#ffffff26;margin:14px 0;overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--saffron),var(--teal));transition:width .4s}
+.meter p{margin:0;color:#cfe5e1;font-size:.95rem}
+.meter button{margin-top:14px;background:none;border:1px solid #ffffff66;color:#fff;border-radius:99px;padding:6px 14px;font:inherit;cursor:pointer}
+
+/* contacts + plan */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.box{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:26px}
+.box h3{font-size:1.6rem;margin-bottom:12px}
+.box dl{margin:0}.box dt{font-weight:700;margin-top:12px}.box dd{margin:0;color:var(--mute)}
+.num{font:800 2.4rem "Bricolage Grotesque",sans-serif;color:var(--coral)}
+.steps{margin:0;padding-left:20px}.steps li{margin:9px 0}
+
+footer{background:var(--deep);color:#b9d2d0;padding:44px 0;border-top:6px solid var(--saffron);font-size:.93rem}
+footer b{color:#fff;font:800 1.4rem "Bricolage Grotesque",sans-serif;display:block;margin-bottom:8px}
+.stripe{height:10px;background:linear-gradient(90deg,var(--coral) 0 25%,var(--saffron) 0 50%,var(--teal) 0 75%,var(--sea) 0)}
+
+@media (max-width:820px){
+  .hero .wrap,.panel,.bag,.two{grid-template-columns:1fr}
+  .sails{justify-self:center;max-width:320px}
+  .meter{position:static}
+  section{padding:56px 0}
+}
+</style>
+</head>
+<body>
+<nav><div class="wrap">
+  <b>Handa Zamboanga</b>
+  <a href="#hazards">Hazards</a><a href="#signals">Typhoon signals</a><a href="#gobag">Go-bag</a><a href="#plan">Family plan</a><a href="#help">Who to call</a>
+  <button id="theme" type="button" aria-label="Switch light or dark theme">Theme</button>
+</div></nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div>
+      <h1>Be ready before the sea, sky or ground moves.</h1>
+      <p>A plain-language disaster guide for Zamboanga City and the Philippines. Learn the hazards, pack your go-bag and make a plan with your family.</p>
+      <a class="btn" href="#gobag">Build my go-bag</a><a class="btn ghost" href="#hazards">Explore hazards</a>
+    </div>
+    <svg class="sails" viewBox="0 0 430 330" role="img" aria-label="Illustration of two colorful vinta sailboats on the sea">
+      <g class="sail"><path d="M130 20 L130 215 L40 215 Z" fill="#e0472f"/><path d="M130 20 L130 215 L85 215 Z" fill="#f4b400"/><path d="M130 20 L130 215 L105 215 Z" fill="#19a596"/></g>
+      <g class="sail"><path d="M290 70 L290 235 L205 235 Z" fill="#19a596"/><path d="M290 70 L290 235 L248 235 Z" fill="#e0472f"/><path d="M290 70 L290 235 L270 235 Z" fill="#f4b400"/></g>
+      <path d="M20 232 Q80 270 150 232 L170 232 Q215 262 300 236 L410 236 Q380 285 300 288 L90 288 Q40 280 20 232Z" fill="#f4b400" opacity=".0"/>
+      <path d="M22 220 H228 Q210 262 160 266 H80 Q40 258 22 220Z" fill="#0f3a4f" stroke="#f4b400" stroke-width="4"/>
+      <path d="M190 240 H400 Q380 282 330 286 H250 Q210 276 190 240Z" fill="#0f3a4f" stroke="#e0472f" stroke-width="4"/>
+    </svg>
+  </div>
+  <svg class="waves" viewBox="0 0 1200 70" preserveAspectRatio="none" aria-hidden="true"><path d="M0 35 Q150 0 300 35 T600 35 T900 35 T1200 35 V70 H0Z" fill="var(--paper)"/></svg>
+</header>
+
+<section>
+  <div class="wrap">
+    <h2>Why it matters here</h2>
+    <p class="lead">The Philippines sits on the Pacific Ring of Fire and along the typhoon belt. Zamboanga City faces the Sulu Sea and the Moro Gulf, so earthquakes, tsunamis, floods and fires all deserve a plan.</p>
+    <div class="facts">
+      <div class="fact"><h3>Ring of Fire</h3><p>Frequent earthquakes and volcanoes shape the whole country, including Mindanao.</p></div>
+      <div class="fact"><h3>Typhoon belt</h3><p>Around 20 tropical cyclones enter the Philippine area each year. Mindanao is hit less often, but heavy rain and flooding still happen.</p></div>
+      <div class="fact"><h3>Coastal city</h3><p>Low-lying barangays and shoreline communities need to know their evacuation routes to high ground.</p></div>
+      <div class="fact"><h3>Civil emergencies</h3><p>The 2013 Zamboanga crisis showed that families may need to evacuate fast for reasons other than weather.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="hazards">
+  <div class="wrap">
+    <h2>Know your hazards</h2>
+    <p class="lead">Pick a hazard to see what to do before, during and after.</p>
+    <div class="tabs" role="tablist" id="tabs"></div>
+    <div class="panel" id="panel" role="tabpanel" aria-live="polite"></div>
+  </div>
+</section>
+
+<section id="signals">
+  <div class="wrap">
+    <h2>Typhoon wind signals</h2>
+    <p class="lead">PAGASA raises Tropical Cyclone Wind Signals (TCWS) based on expected wind speed. A higher number means stronger winds and less time to prepare.</p>
+    <div class="ladder">
+      <div class="rung s1"><strong>Signal 1</strong><span>Strong winds, 39–61 km/h. Secure loose items, stay updated.</span><small>~36 hrs ahead</small></div>
+      <div class="rung s2"><strong>Signal 2</strong><span>Gale-force, 62–88 km/h. Light damage to weak houses likely.</span><small>~24 hrs ahead</small></div>
+      <div class="rung s3"><strong>Signal 3</strong><span>Storm-force, 89–117 km/h. Move to a sturdy shelter.</span><small>~18 hrs ahead</small></div>
+      <div class="rung s4"><strong>Signal 4</strong><span>Typhoon-force, 118–184 km/h. Severe, widespread damage.</span><small>~12 hrs ahead</small></div>
+      <div class="rung s5"><strong>Signal 5</strong><span>185 km/h or more. Catastrophic. Stay inside a safe shelter.</span><small>~12 hrs ahead</small></div>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="gobag">
+  <div class="wrap">
+    <h2>Pack your go-bag</h2>
+    <p class="lead">Keep one bag per household near the door, enough for at least three days. Tick items as you pack them.</p>
+    <div class="bag">
+      <div class="items" id="items"></div>
+      <aside class="meter" aria-live="polite">
+        <div class="big" id="pct">0%</div>
+        <div class="bar"><i id="fill"></i></div>
+        <p id="msg">Start with water and food.</p>
+        <button type="button" id="reset">Clear checklist</button>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section id="plan">
+  <div class="wrap">
+    <h2>Make a family plan</h2>
+    <p class="lead">Do this together tonight. It takes about thirty minutes.</p>
+    <div class="two">
+      <div class="box"><h3>Five steps</h3>
+        <ol class="steps">
+          <li>Find your barangay’s evacuation center and the safest route to it.</li>
+          <li>Choose a meeting place near home and another outside your neighborhood.</li>
+          <li>Pick one relative in another city as the family contact.</li>
+          <li>Keep copies of IDs, land papers and medical records in a waterproof bag.</li>
+          <li>Practice a drill twice a year, including with children and elders.</li>
+        </ol>
+      </div>
+      <div class="box"><h3>Look after everyone</h3>
+        <ol class="steps">
+          <li>Write down medicines and doses for family members who need them.</li>
+          <li>Plan how to move elders, people with disabilities and young children.</li>
+          <li>Include pets: food, water, a leash or carrier.</li>
+          <li>Agree to text instead of calling when networks are crowded.</li>
+          <li>Charge power banks when a storm or heavy rain is forecast.</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="help">
+  <div class="wrap">
+    <h2>Who to call and follow</h2>
+    <p class="lead">Save these before you need them.</p>
+    <div class="two">
+      <div class="box"><div class="num">911</div><h3>National emergency hotline</h3><p style="color:var(--mute);margin:0">For police, fire and medical emergencies anywhere in the Philippines.</p>
+        <dl><dt>Philippine Red Cross: 143</dt><dd>First aid, ambulance and relief support.</dd>
+        <dt>Your barangay hall and the Zamboanga City DRRMO</dt><dd>Look up their current numbers on the city’s official pages and write them on your fridge.</dd></dl>
+      </div>
+      <div class="box"><h3>Official sources for alerts</h3>
+        <dl><dt>PAGASA (pagasa.dost.gov.ph)</dt><dd>Weather, typhoon bulletins, rainfall and flood warnings.</dd>
+        <dt>PHIVOLCS (phivolcs.dost.gov.ph)</dt><dd>Earthquake, tsunami and volcano information.</dd>
+        <dt>NDRRMC</dt><dd>National situation reports and disaster advisories.</dd>
+        <dt>Your local government’s official page</dt><dd>Class suspensions, evacuation orders and relief schedules.</dd></dl>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="stripe"></div>
+<footer><div class="wrap">
+  <b>Handa Zamboanga</b>
+  <p>An educational guide for students and families. It is not an official government publication. Always follow instructions from your local DRRMO, barangay officials and national agencies, and verify hotline numbers before saving them.</p>
+</div></footer>
+
+<script>
+var H={
+ Earthquake:{why:"Zamboanga lies near active faults and trenches. Shaking comes with no warning.",
+  b:["Fix tall shelves and heavy frames to walls","Know the safe spots: under sturdy tables, away from glass","Agree on a meeting place outside the house"],
+  d:["Drop, cover and hold on under a sturdy table","Stay away from windows, shelves and ceiling lights","If outside, move to open ground away from wires and buildings"],
+  a:["Expect aftershocks and be ready to drop again","Check for injuries, gas leaks and cracks before re-entering","If you are on the coast and the shaking was strong, move to high ground"]},
+ Tsunami:{why:"A strong offshore earthquake can send waves to the coast within minutes.",
+  b:["Learn the tsunami evacuation signs and high ground nearest you","Practice walking your route, not driving","Keep your go-bag by the door"],
+  d:["Do not wait for a siren if shaking was long or strong, or the sea suddenly recedes","Go inland and uphill on foot, right away","Stay far from the shore, rivers and harbors"],
+  a:["Stay on high ground until officials say it is safe","Waves can come many times over hours","Avoid damaged buildings and floodwater"]},
+ "Typhoon & flood":{why:"Even when the storm passes north, heavy monsoon rain can flood rivers and low streets.",
+  b:["Follow PAGASA bulletins and know your signal level","Trim branches, secure roofs and store important papers in plastic","Charge phones and power banks"],
+  d:["Move to the evacuation center early if told to","Never walk or drive through floodwater","Switch off the main power if water enters the house"],
+  a:["Return only when officials say it is safe","Boil or treat drinking water and avoid floodwater (leptospirosis risk)","Photograph damage for assistance and insurance"]},
+ Fire:{why:"Dense neighborhoods and wooden houses let fires spread quickly.",
+  b:["Check wiring and never overload extension cords","Keep a fire extinguisher and know two exits from every room","Keep matches and candles away from curtains and children"],
+  d:["Shout the alarm, get everyone out and call 911","Crawl low under smoke and feel doors before opening","Never go back inside for belongings"],
+  a:["Stay out until firefighters clear the building","Get medical care for burns and smoke inhalation","Report to the barangay so families can be assisted"]},
+ "Civil emergency":{why:"Armed conflict or security threats can force fast evacuation, as in 2013.",
+  b:["Know evacuation centers and routes away from the affected area","Keep documents and a go-bag ready","Agree on a family contact outside the city"],
+  d:["Follow official instructions and avoid rumors","Stay low and away from windows if there is gunfire","Move only through routes declared safe"],
+  a:["Register at the evacuation center so family can find you","Seek psychosocial support, especially for children","Wait for official clearance before going home"]}
+};
+var tabs=document.getElementById("tabs"),panel=document.getElementById("panel");
+function li(a){return a.map(function(x){return "<li>"+x+"</li>"}).join("")}
+function show(k){
+  var d=H[k];
+  panel.innerHTML="<div><h3>"+k+"</h3><p class='why'>"+d.why+"</p></div><div class='phases'>"+
+   "<div class='phase b'><h4>Before</h4><ul>"+li(d.b)+"</ul></div>"+
+   "<div class='phase d'><h4>During</h4><ul>"+li(d.d)+"</ul></div>"+
+   "<div class='phase a'><h4>After</h4><ul>"+li(d.a)+"</ul></div></div>";
+  Array.prototype.forEach.call(tabs.children,function(b){b.setAttribute("aria-selected",b.textContent===k)});
+}
+Object.keys(H).forEach(function(k,i){
+  var b=document.createElement("button");b.type="button";b.setAttribute("role","tab");b.textContent=k;
+  b.onclick=function(){show(k)};tabs.appendChild(b);
+});
+show("Earthquake");
+
+var ITEMS=["Drinking water (3 liters per person per day)","Ready-to-eat food for 3 days","First aid kit and personal medicines","Flashlight and extra batteries","Battery or hand-crank radio","Power bank and charging cable","Whistle","Copies of IDs and key documents","Cash in small bills and coins","Face masks and hygiene items","Extra clothes and a light raincoat","Blanket or mat","Phone numbers written on paper","Baby, elder or pet needs","Dust mask and work gloves","Waterproof bag or sealed plastic"];
+var KEY="handa-zc-bag",saved=[];
+try{saved=JSON.parse(localStorage.getItem(KEY)||"[]")}catch(e){saved=[]}
+var box=document.getElementById("items");
+ITEMS.forEach(function(t,i){
+  var l=document.createElement("label"),c=document.createElement("input");
+  c.type="checkbox";c.checked=saved.indexOf(i)>-1;c.dataset.i=i;
+  c.onchange=update;l.appendChild(c);l.appendChild(document.createTextNode(t));box.appendChild(l);
+});
+function update(){
+  var cs=box.querySelectorAll("input"),on=[];
+  cs.forEach(function(c){if(c.checked)on.push(+c.dataset.i)});
+  var p=Math.round(on.length/cs.length*100);
+  document.getElementById("pct").textContent=p+"%";
+  document.getElementById("fill").style.width=p+"%";
+  document.getElementById("msg").textContent=p===100?"Your go-bag is ready. Check expiry dates every six months.":p>=50?"Good progress. Keep going.":"Start with water, food and medicines.";
+  try{localStorage.setItem(KEY,JSON.stringify(on))}catch(e){}
+}
+document.getElementById("reset").onclick=function(){box.querySelectorAll("input").forEach(function(c){c.checked=false});update()};
+update();
+
+document.getElementById("theme").onclick=function(){
+  var r=document.documentElement,dark=r.dataset.theme?r.dataset.theme==="dark":matchMedia("(prefers-color-scheme: dark)").matches;
+  r.dataset.theme=dark?"light":"dark";
+};
+</script>
+</body>
+</html>
